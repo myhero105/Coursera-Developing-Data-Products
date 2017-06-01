@@ -1,0 +1,16 @@
+---
+title: "Developing Data Projects Assignment week2"
+date: "5/31/2017"
+output: html_document
+---
+
+## Instructions
+##### Create a web page using R Markdown that features a map created with Leaflet.
+##### Your webpage must contain the date that you created the document, and it must contain a map created with Leaflet.
+
+## May 31, 2017
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+library(leaflet)
+my_map <- leaflet() %>% addTiles() %>% addMarkers(lat=32.783512, lng=-79.938669, popup="Charleston")
+my_map
+```
