@@ -1,0 +1,38 @@
+---
+title: "Assignment week3"
+author: "Aki Yoshida"
+date: "6/10/2017"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Instructions
+
+Create a web page presentation using R Markdown that features a plot created with Plotly. Host your webpage on either GitHub Pages, RPubs, or NeoCities. Your webpage must contain the date that you created the document, and it must contain a plot created with Plotly. 
+
+## Dataset 
+```{r cars, echo = TRUE, comment=""}
+data(mtcars)
+head(mtcars)
+```
+
+## Scatter plot 1
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(plotly)
+plot_ly(data=mtcars, x=mtcars$wt, y=mtcars$mpg, color=as.factor(mtcars$cyl), size=mtcars$hp, type="scatter", mode="markers") %>%
+    layout(title="Correlation Weight and MPG",
+       xaxis=list(title="Weight"),
+       yaxis=list(title="MPG"),
+       legend=list(title="Number of cylinders"))
+```
+
+## Scatter plot 2
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+data(iris)
+library(cowplot)
+g <- ggplot(data = iris, aes(x=Sepal.Length, y=Sepal.Width, col = Species)) + geom_point() + facet_grid(~Species) + labs(title="Regression model") + geom_smooth(method="lm")
+ggplotly(g) 
+```
